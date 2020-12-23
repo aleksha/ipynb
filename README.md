@@ -2,6 +2,7 @@
 
 My IPython notebooks as code examples for myself.
 
+
 ## conda envoirements
 
 First you have to install and update conda. Here are the commands:
@@ -15,4 +16,14 @@ conda update -n base -c defaults conda
 To install envoirement containing: `geant4`, `root`, `ostap`, `scipy`:
 ```bash
 conda create --name hep-env --file requirements.txt
+```
+
+To run Jupyter at the remote host
+```bash
+jupyter notebook --port=8888
+```
+
+To use SSH-tunneling on a browser machine:
+```bash
+ssh -L localhost:8888:localhost:8888 USERNAME@IP-ADDRESS
 ```
