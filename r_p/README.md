@@ -18,3 +18,5 @@ Three typical prob;ems are considered:
 ## Result
 
 Worst case scenarios 10^-6 shift in a Q2 (0.1% in a relative value) causes 0.005 fm bias in the Rp.
+
+See `Bias.png`
