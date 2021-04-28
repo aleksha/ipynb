@@ -1,3 +1,11 @@
+#include "TAxis.h"
+#include "TCanvas.h"
+#include "TGraph.h"
+#include "TGaxis.h"
+#include "TLatex.h"
+#include "TMath.h"
+#include "TSystem.h"
+
 //----------------------------------------------------------------
 //
 // Goal   : Rosenbluth's cross section for mu p-scattering
@@ -40,7 +48,7 @@ double epXS( double E, double t, double r = 0.84 ){
     double M      = 0.938272 ; // mass of proton.
     double M2 = M*M          ; // squared mass of proton.
     double GeV2mb = 0.389379  ; // inverse GeV^2 to mb  : 0.38939 mb = 1/GeV^2
-    
+
     //-------------------------------------------------------
     // Proton electric and magnetic form factors squared
     //
@@ -69,7 +77,7 @@ void XS84(){
  double E = 0.720    ; // Energy of el beam.
  double M = 0.938272 ; // mass of proton, GeV.
 
- double x[N], y1[N]; //arrays for TGraph.
+ double x[N], y1[N], y2[N], y3[N]; //arrays for TGraph.
 
  // loop to fill arrays
  for(int i=0 ; i<N; i++){
@@ -77,12 +85,14 @@ void XS84(){
      t = - 2. * M * T        ;
      x[i] = T*1000. ; // Recoil kinetic energy, MeV.
      y1[i] = epXS( E , t , 0.84 ) ; // XS with R_proton = 0.84 fm.
+     y2[i] = epXS( E , t , 0.88 ) ; // XS with R_proton = 0.8 fm.
+     y3[i] = epXS( E , t , 0.   ) ; // XS with R_proton = 0.8 fm.
  }
 
 //----------------------------------------------------------------
 // TGraph definition and some polishing
 //
- gr1 = new TGraph( N, x, y1 );
+ TGraph *gr1 = new TGraph( N, x, y1 );
  gr1->SetLineWidth(3);
  gr1->SetLineColor(2);
  gr1->SetTitle("");
@@ -93,6 +103,15 @@ void XS84(){
  gr1->GetXaxis()->SetTitleFont( 2 );
  gr1->GetYaxis()->SetLabelFont( 2 );
  gr1->GetXaxis()->SetLabelFont( 2 );
+
+ TGraph *gr2 = new TGraph( N, x, y2 );
+ gr2->SetLineWidth(3);
+ gr2->SetLineColor(4);
+
+ TGraph *gr3 = new TGraph( N, x, y3 );
+ gr3->SetLineWidth(3);
+ gr3->SetLineColor(1);
+
 
 //----------------------------------------------------------------
 // Additional x-axis on top of figure
@@ -105,41 +124,42 @@ void XS84(){
 //----------------------------------------------------------------
 // TLateX labels
 //
- tl = new TLatex(14,400,"Electrons 720 MeV");
- tr = new TLatex(14,170,"R_{p} = 0.84 fm");
+ double fq = 400./170.;
+ TLatex *tl = new TLatex(13,400/pow(fq,0),"Electrons 720 MeV");
+ TLatex *tr = new TLatex(14,400/pow(fq,1),"R_{p} = 0.84 fm");
+ TLatex *tb = new TLatex(14,400/pow(fq,2),"R_{p} = 0.88 fm");
+ TLatex *tn = new TLatex(14,400/pow(fq,3),"no structure");
  tr->SetTextColor(2);
- tf = new TLatex(10,6,"#frac{d#sigma}{dt} ~ 1 / t^{2},  #minus t = 2MT_{R}");
- tu = new TLatex(22.7,1300,"#minus t, GeV^{2}");
+ tb->SetTextColor(4);
+ tn->SetTextColor(1);
+ TLatex *tf = new TLatex(10,6,"#frac{d#sigma}{dt} ~ 1 / t^{2},  #minus t = 2MT_{R}");
+ TLatex *tu = new TLatex(22.7,1300,"#minus t, GeV^{2}");
  tu->SetTextSize(0.04);
- td = new TLatex(23.0,0.05,"T_{R}, MeV");
+ TLatex *td = new TLatex(23.0,0.05,"T_{R}, MeV");
  td->SetTextSize(0.04);
 
 //----------------------------------------------------------------
 // Drawing TGraphs, labels and saving of Figure
 //
- canv = new TCanvas("canv","fig1",900,600);
+ TCanvas *canv = new TCanvas("canv","fig1",900,600);
  canv->SetLogy();
 
  gr1->Draw("AL");
+ gr2->Draw("same L");
+ gr3->Draw("same L");
  axis->Draw();
  tl->Draw();
  tr->Draw();
+ tb->Draw();
+ tn->Draw();
  tf->Draw();
  tu->Draw();
  td->Draw();
 
-// canv->Print("Fig1_epXS_0.84fm.png");
-// canv->Print("Fig1_epXS_0.84fm.eps");
+ canv->Print("Fig1_epXS.png");
 
+ gSystem->Exit(1);
 
- double xs_el = 0;
- double dtt = 0.0000518/1.5;
- double mtt = 0.353282;
- for(double tt=1.5*dtt ; tt<mtt; tt = tt + dtt ){
-     xs_el = xs_el + dtt * epXS( 0.720, tt , 0.84 ) ; // XS with R_proton = 0.84 fm.
- }
- cout << "xs elastic ( " << 1.5*dtt << " < t < " << mtt << " GeV^2) : " << xs_el << " mb\n";
- 
 //----------------------------------------------------------------
 // END OF MACRO
 //----------------------------------------------------------------

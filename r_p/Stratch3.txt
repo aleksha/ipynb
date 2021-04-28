@@ -1,0 +1,73 @@
+   ------------------------------------------------------------------
+  | Welcome to ROOT 6.20/06                        https://root.cern |
+  | (c) 1995-2020, The ROOT Team; conception: R. Brun, F. Rademakers |
+  | Built for linuxx8664gcc on Jun 10 2020, 16:36:00                 |
+  | From tag , 10 June 2020                                          |
+  | Try '.help', '.demo', '.license', '.credits', '.quit'/'.q'       |
+   ------------------------------------------------------------------
+
+
+Processing refit3.C+...
+ FCN=973.843 FROM MIGRAD    STATUS=CONVERGED      76 CALLS          77 TOTAL
+                     EDM=7.34603e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  E            7.20000e-01     fixed    
+   2  r_{p}        8.59376e-01   1.63492e-03   2.04267e-05   2.75654e-01
+   3  scale        9.93272e+03   1.53790e+00   1.90230e-02  -1.06331e-04
+ FCN=982.924 FROM MIGRAD    STATUS=CONVERGED      30 CALLS          31 TOTAL
+                     EDM=1.35636e-09    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  E            7.20000e-01     fixed    
+   2  r_{p}        8.59521e-01   1.63464e-03   2.05170e-05   3.86677e-02
+   3  scale        9.93280e+03   1.53791e+00   1.91116e-02  -2.78074e-05
+ FCN=974.712 FROM MIGRAD    STATUS=CONVERGED      28 CALLS          29 TOTAL
+                     EDM=3.20787e-12    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  E            7.20000e-01     fixed    
+   2  r_{p}        8.59621e-01   1.63447e-03   2.04296e-05  -1.89107e-03
+   3  scale        9.93287e+03   1.53793e+00   1.90318e-02   1.18083e-06
+ FCN=983.509 FROM MIGRAD    STATUS=CONVERGED      28 CALLS          29 TOTAL
+                     EDM=1.76031e-13    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  E            7.20000e-01     fixed    
+   2  r_{p}        8.59751e-01   1.63424e-03   2.05185e-05  -3.55436e-04
+   3  scale        9.93294e+03   1.53794e+00   1.91175e-02   4.53320e-07
+ FCN=999.158 FROM MIGRAD    STATUS=CONVERGED      30 CALLS          31 TOTAL
+                     EDM=2.55677e-11    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  E            7.20000e-01     fixed    
+   2  r_{p}        8.59901e-01   1.63396e-03   2.06758e-05   5.31261e-03
+   3  scale        9.93303e+03   1.53795e+00   1.92690e-02  -3.80880e-06
+ FCN=976.416 FROM MIGRAD    STATUS=CONVERGED      26 CALLS          27 TOTAL
+                     EDM=1.37899e-10    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  E            7.20000e-01     fixed    
+   2  r_{p}        8.59251e-01   1.63514e-03   2.04511e-05   1.11907e-02
+   3  scale        9.93265e+03   1.53789e+00   1.90482e-02  -1.16650e-05
+ FCN=990.072 FROM MIGRAD    STATUS=CONVERGED      28 CALLS          29 TOTAL
+                     EDM=3.68803e-12    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  E            7.20000e-01     fixed    
+   2  r_{p}        8.59144e-01   1.63533e-03   2.06007e-05  -2.02594e-03
+   3  scale        9.93258e+03   1.53787e+00   1.91805e-02   1.23210e-06
+ FCN=1016.4 FROM MIGRAD    STATUS=CONVERGED      28 CALLS          29 TOTAL
+                     EDM=3.74575e-12    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  E            7.20000e-01     fixed    
+   2  r_{p}        8.59030e-01   1.63554e-03   2.08755e-05  -2.04155e-03
+   3  scale        9.93251e+03   1.53786e+00   1.94335e-02   1.24634e-06
+ FCN=1006.86 FROM MIGRAD    STATUS=CONVERGED      28 CALLS          29 TOTAL
+                     EDM=1.04386e-12    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  E            7.20000e-01     fixed    
+   2  r_{p}        8.58911e-01   1.63575e-03   2.07804e-05  -1.06032e-03
+   3  scale        9.93244e+03   1.53785e+00   1.93421e-02   8.34384e-07
