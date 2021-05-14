@@ -32,3 +32,24 @@ For the meadians an uncertainty of the statistics is obtained _via_ bootstrap.
 Script `bootstrap.py`
 
 See results in `results.txt`.
+
+## Two ways to measure Vin
+
+There are a better way to meassure input signal. The input voltage is measured 
+with 1000 of first AKIP channels and 1000 of last channels. The difference is 
+independent on structures before and after pulse.
+
+An example is obtained with script `corr.py`.
+
+For the channel 0007:
+  * No visible correlations between two methods are visible on a scatter plot
+  * See `figs/Corr_AD_AI_0007.png`
+  * Relative precision for this case:
+      + AD methos: 1.11 %
+      + AI method: 0.25 %
+  * Both methods demonstrate no visible correlation with the reconstructed 
+     energy of amplified signal. See:
+      + `figs/Corr_AD_e1_0007.png`
+      + `figs/Corr_AI_e1_0007.png`
+  * Indeed, AI-method is betted, due to higher precision.
+
