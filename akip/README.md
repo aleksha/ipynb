@@ -53,3 +53,18 @@ For the channel 0007:
       + `figs/Corr_AI_e1_0007.png`
   * Indeed, AI-method is betted, due to higher precision.
 
+## Liniarity check
+
+Script `lin.py`.
+
+This uses AI algo. Script to calculate systematic uncertainty of reconstructed 
+energy. This uncertainty is an additional uncertainty to each of 5 point, which
+gives Chi2/NDoF=1 for linear fit.
+
+
+**The resulting systematics is order of 3 keV**.
+
+
+
+
+
