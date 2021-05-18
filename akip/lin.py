@@ -63,7 +63,7 @@ print( r.Chi2()/r.Ndf() )
 #===============================================================================
 ini = [] ; res = []
 for a in range(1,24):
-    Syst = VE(0,(a*0.005)**2)
+    Syst = VE( 0, (a*0.005)**2 )
     AvMeanOutSyst = []
     for b in AvMeanOut:
         AvMeanOutSyst.append( b+Syst )
