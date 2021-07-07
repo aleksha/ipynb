@@ -1,0 +1,26 @@
+
+
+33033593	33000001
+66075680	33000001
+ FCN=1045.65 FROM MIGRAD    STATUS=CONVERGED      15 CALLS          16 TOTAL
+                     EDM=1.21204e-11    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0           5.81829e-03   2.64911e-03   4.18475e-05  -1.85855e-03
+
+****************************************
+Minimizer is Linear / Migrad
+Chi2                      =      1051.59
+NDf                       =          998
+p0                        =      32952.3   +/-   11.7038     
+p1                        =      1152.04   +/-   251.893     
+In [3]: 
+
+
+
+****************************************
+Minimizer is Linear / Migrad
+Chi2                      =      958.386
+NDf                       =          998
+p0                        =      33026.9   +/-   11.7113     
+p1                        =         -687   +/-   251.925   
