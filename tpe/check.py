@@ -1,9 +1,8 @@
 
 
 EV=33000000
-EV=30000000
-#N_Bins = 1000
-N_Bins = 100
+EV=33000
+N_Bins = 1000
 
 hp = ROOT.TH1F("hp",";;",N_Bins,0.001,0.08);
 hm = ROOT.TH1F("hm",";;",N_Bins,0.001,0.08);
@@ -11,12 +10,6 @@ hm = ROOT.TH1F("hm",";;",N_Bins,0.001,0.08);
 
 fp  = ROOT.TF1("fp" ,"1.+(0.01667*x+0.00388*sqrt(x))", 0.001, 0.08)
 fm  = ROOT.TF1("fm" ,"1.-(0.01667*x+0.00388*sqrt(x))", 0.001, 0.08)
-
-#fp  = ROOT.TF1("fp" ,"1.+(0.33*x+0.00388*sqrt(x))", 0.001, 0.08)
-#fm  = ROOT.TF1("fm" ,"1.-(0.33*x+0.00388*sqrt(x))", 0.001, 0.08)
-
-#fp  = ROOT.TF1("fp" ,"1.+(0.033*x)", 0.001, 0.08)
-#fm  = ROOT.TF1("fm" ,"1.-(0.033*x)", 0.001, 0.08)
 
 fp_max = fp.Eval(0.08)
 fm_max = fm.Eval(0.001)
@@ -27,7 +20,7 @@ with open("out.txt","r") as fl:
     run_p = True
     ev_p=0
     while run_p:
-        x = float( fl.readline()[:-1] ) 
+        x = 0.001+0.079*ROOT.gRandom.Rndm()
         ev+=1
         y = fp_max*ROOT.gRandom.Rndm()
         if y<fp.Eval(x):
@@ -40,7 +33,7 @@ with open("out.txt","r") as fl:
     run_m = True
     ev_m=0
     while run_m:
-        x = float( fl.readline()[:-1] ) 
+        x = 0.001+0.079*ROOT.gRandom.Rndm()
         ev+=1
         y = fm_max*ROOT.gRandom.Rndm()
         if y<fm.Eval(x):
@@ -54,7 +47,7 @@ with open("out.txt","r") as fl:
 
 h = hp/hm
 
-tf1 = ROOT.TF1("tf1","(1.+[0]*(0.01667*x+0.00388*sqrt(x)))/(1-[0]*(0.01667*x+0.00388*sqrt(x)))",0.001,0.08)
+tf1 = ROOT.TF1("tf1","(1.+[0]*x)/(1-[0]*x)",0.001,0.08)
 tf1.SetLineWidth(3)
 tf1.SetLineColor(2)
 
