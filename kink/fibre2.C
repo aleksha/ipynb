@@ -24,11 +24,13 @@ using namespace std;
 //==============================================================================
 double T_P_VALS[5] = { 0, 0.5, 2.,5.,10.};
 double E        = 100.;
+int STAT        = 2500;
 bool  USE_CORE = true;
 double Zin1     = -3000.;
 double Zin2     = -1000.;
-double Zout     = 3000.;
-double Rsci     = 1.;
+double Zout     = 5000.;
+double Lfib     = 2.;
+double Rsci     = 1.5;
 
 double m_l = 0.105658;
 double m_p = 0.938272;
@@ -41,7 +43,7 @@ TVector3 calc_plane( TVector3 s, TVector3 p, double Z){
     return TVector3( s.X()+((Z-s.Z())/p.Z())*p.X(), s.Y()+((Z-s.Z())/p.Z())*p.Y(), Z );
 }
 //==============================================================================
-void fast(){
+void fibre2(){
 
   TFile* rfile = new TFile("./output_cedar_mu100_parallel.root", "READ");
   rfile->ls();
@@ -76,7 +78,7 @@ void fast(){
   TVector3  direction, XY, XY1, XY2;
 
 
-  while( trg_in < 1000 ){
+  while( trg_in < STAT ){
 
     tree->GetEntry( gRandom->Integer(length) );
     if( USE_CORE ){
@@ -114,6 +116,19 @@ void fast(){
     XY2 =  calc_plane( sca, lit, Zin2);
 
 
+    if( fabs(XY1.X())<Lfib/2. && fabs(XY1.Y())<Lfib/2. ){
+      if( fabs(XY2.X())<Lfib/2. && fabs(XY2.Y())<Lfib/2. ){
+        trg_in++;
+        trgs_i[idx_Tp]++;
+        if(trg_in>0 ) cout << trg_in << "\t" << ent << "\t" << 100.*float(trg_in)/float(ent) << "\t\t" << 2000000.*float(trg_in)/float(ent) << " +- " << 2000000.*sqrt(float(trg_in))/float(ent) << endl;
+        if( !( fabs(XY.X())<Lfib*2. && fabs(XY.Y())<Lfib*2.)  ){
+          trg++;
+          trgs_o[idx_Tp]++;
+        }
+      }
+    }
+  }
+/*
     if( pow(XY1.X(),2) + pow(XY1.Y(),2) < pow(Rsci,2) ){
       if( pow(XY2.X(),2) + pow(XY2.Y(),2) < pow(Rsci,2) ){
         trg_in++;
@@ -127,7 +142,8 @@ void fast(){
       }
     }
   }
-
+*/
+  for(int i=0;i<5;i++) cout << T_P_VALS[i] << "  " << trgs_i[i] << " " << trgs_o[i] << "\n";
 
   gSystem->Exit(1);
 
